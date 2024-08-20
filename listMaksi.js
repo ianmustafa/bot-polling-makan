@@ -13,7 +13,7 @@ const listMaksi = [
   "Mira Jaya (NasKun)",
   "Pecel Juara",
   "Roso Sambel",
-  "Roca - Nasi Krawu"
+  "Roca (Nasi Krawu)",
 ];
 
 module.exports = listMaksi;
