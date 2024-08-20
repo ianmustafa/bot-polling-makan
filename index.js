@@ -33,7 +33,7 @@ const sendMaksiPolling = (msg, options) => {
   const chatId = msg.chat.id;
   const date = format(new Date(), "dd MMMM yyyy");
 
-  bot.sendPoll(chatId, `Makan Siang ${date}`, shuffleArray(options).slice(0, 8), {
+  bot.sendPoll(chatId, `Makan Siang ${date}`, shuffleArray(options).slice(0, 10), {
     is_anonymous: false,
     allows_multiple_answers: false,
     message_thread_id: msg.message_thread_id,
@@ -45,7 +45,8 @@ const rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [new schedule.Range(1, 5)];
 rule.hour = 10; // 3:00 US West Time -> 10:00 WIB
 rule.minute = 0;
-schedule.scheduleJob(rule, function () {
+rule.tz = 'Asia/Jakarta';
+schedule.scheduleJob(rule, () => {
   sendMaksiPolling({ chat: { id: groupChatId }, message_thread_id: groupTopicId }, listMaksi);
 });
 
